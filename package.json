@@ -1,5 +1,5 @@
 {
-  "name": "owl.carousel",
+  "name": "sv-carousel",
   "description": "Touch enabled jQuery plugin that lets you create beautiful responsive carousel slider.",
   "version": "2.0.0-beta.2.4",
   "homepage": "https://github.com/smashingboxes/OwlCarousel2",
@@ -32,6 +32,7 @@
     "grunt-gh-pages": "^0.10.0",
     "grunt-jscs-checker": "~0.4.2",
     "grunt-sass": "^0.18.1",
+    "grunt-contrib-less": "^1.0.0",
     "load-grunt-tasks": "^0.4.0",
     "pretty": "^0.1.2"
   },

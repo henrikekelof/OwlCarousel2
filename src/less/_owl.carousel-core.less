@@ -1,0 +1,109 @@
+/* 
+ *  Core SiteVision Owl Carousel CSS File
+ */
+
+.sv-carousel {
+	// display: none;
+	width: 100%;
+	-webkit-tap-highlight-color: transparent;
+	/* position relative and z-index fix webkit rendering fonts issue */
+	position: relative;
+	z-index: 1;
+	
+	&__stage-outer {
+		position: relative;
+		overflow: hidden;
+		/* fix for flashing background */
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+
+	&__stage {
+		position: relative;
+		-ms-touch-action: pan-Y;
+
+		&:after {
+			content: ".";
+			display: block;
+			clear: both;
+			visibility: hidden;
+			line-height: 0;
+			height: 0;
+		}
+	}
+	
+	&__item {
+		position: relative;
+		min-height: 1px;
+		float: left;
+		-webkit-backface-visibility: hidden;
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+	}
+	
+	&__img {
+		display: block;
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		margin: 0 auto;
+		-webkit-transform-style: preserve-3d;
+	}
+	
+	&__nav&--disabled,
+	&__dots&--disabled {
+		display: none;
+	}
+
+	&__prev,
+	&__next,
+	&__dot {
+		cursor: pointer;
+		cursor: hand;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	&--loaded {
+		display: block;
+	}
+
+	&--loading {
+		opacity: 0;
+		display: block;
+	}
+
+	&--hidden {
+		opacity: 0;
+	}
+
+	&--refresh &__item {
+		display: none;
+	}
+	
+	&--drag &__item {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	&--grab {
+		cursor: move;
+		cursor: -webkit-grab;
+		cursor: -o-grab;
+		cursor: -ms-grab;
+		cursor: grab;
+	}
+
+	&--rtl {
+		direction: rtl;
+	}
+
+	&--rtl &__item {
+		float: right;
+	}
+}
+

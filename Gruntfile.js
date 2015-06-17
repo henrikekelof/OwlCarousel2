@@ -111,10 +111,26 @@ module.exports = function(grunt) {
 				}
 			},
 
+			less: {
+				dist: {
+					options: {
+						paths: [ 'src/css' ]
+					},
+					files: {
+						'src/css/sv-carousel.css': 'src/less/sv-carousel.less'
+					}
+				}
+			},
+
 			concat: {
 				dist: {
 					files: {
-						'dist/assets/owl.carousel.css': [ 'src/css/*.css', '!src/css/owl.theme*.css' ],
+						'dist/assets/owl.carousel.css': [ 'src/css/*.css', '!src/css/owl.theme*.css', '!src/css/sv-*.css' ],
+						'dist/<%= pkg.name %>.js': '<%= app.src.scripts %>'
+					}
+				},
+				svdist: {
+					files: {
 						'dist/<%= pkg.name %>.js': '<%= app.src.scripts %>'
 					}
 				}
@@ -123,9 +139,15 @@ module.exports = function(grunt) {
 			cssmin: {
 				dist: {
 					files: {
-						'dist/assets/<%= pkg.name %>.min.css': [ 'src/css/*.css', '!src/css/owl.theme*.css' ],
+						'dist/assets/<%= pkg.name %>.min.css': [ 'src/css/*.css', '!src/css/owl.theme*.css', '!src/css/sv-*.css' ],
 						'dist/assets/owl.theme.default.min.css': 'src/css/owl.theme.default.css',
+						'dist/assets/sv-carousel.min.css': 'src/css/sv-carousel.css',
 						'dist/assets/owl.theme.green.min.css': 'src/css/owl.theme.green.css'
+					}
+				},
+				svdist: {
+					files: {
+						'dist/assets/sv-carousel.min.css': 'src/css/sv-carousel.css'
 					}
 				}
 			},
@@ -171,6 +193,15 @@ module.exports = function(grunt) {
 					src: [ 'owl.theme.*' ],
 					dest: 'dist/assets'
 				},
+
+				svCss: {
+					expand: true,
+					flatten: true,
+					cwd: 'src/css/',
+					src: [ 'sv-*.css' ],
+					dest: 'dist/assets'
+				},
+
 				distImages: {
 					expand: true,
 					flatten: true,
@@ -285,12 +316,15 @@ module.exports = function(grunt) {
 
 	// tasks
 	grunt.registerTask('dist', [ 'clean:dist', 'sass:dist', 'concat:dist', 'cssmin:dist', 'copy:themes', 'copy:distImages', 'jscs:dist', 'uglify:dist', 'copy:readme' ]);
+	grunt.registerTask('svdist', [ 'clean:dist', 'less:dist', 'concat:svdist', 'cssmin:svdist', 'copy:svCss', 'copy:distImages', 'jscs:dist', 'uglify:dist', 'copy:readme' ]);
 
 	grunt.registerTask('docs', [ 'dist', 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);
 
 	grunt.registerTask('test', [ 'jshint:dist', 'qunit:dist' ]);
 
-	grunt.registerTask('default', [ 'dist', 'docs', 'test' ]);
+	grunt.registerTask('owldefault', [ 'dist', 'docs', 'test' ]);
+
+	grunt.registerTask('default', [ 'svdist' ]);
 
 	grunt.registerTask('serve', [ 'connect:docs', 'watch' ]);
 

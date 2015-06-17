@@ -1,0 +1,89 @@
+/*
+*  Standard SiteVision Owl Carousel Theme
+*/
+
+.sv-imgcarousel {
+	
+	&__stage {
+	   list-style-type: none;
+	   margin: 0;
+	   padding: 0;
+	}
+
+	&__prev,
+	&__next {
+		position: absolute;
+	   	top: 50%;
+	   	margin: -14px auto 0;
+	   	background: #000;
+		padding-top: 28px;
+		width: 28px;
+		border-radius: 17px;
+		border: 3px solid #fff;
+		overflow: hidden;
+	   	opacity: 0;
+		transition: all 0.5s ease 0s;
+
+		.sv-editing-mode &,
+		.sv-imgcarousel:hover & {
+			opacity: 1;
+		}	
+
+		&:after {
+			top: 50%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-color: rgba(255, 255, 255, 0);
+			border-width: 8px;
+			margin-top: -8px;
+		}
+	}
+
+
+	&__prev:after {
+	  right: 11px;
+	  border-right-color: #fff;
+	}
+
+	&__next:after {
+	  left: 11px;
+	  border-left-color: #fff;
+	}
+
+	&--disabled {
+	   opacity: 0.5;
+	   cursor: default;
+	}
+
+	&__dots {
+	   position: absolute;
+	   bottom: 5px;
+	   left: 0;
+	   right: 0;
+	   height: 14px;
+	   text-align: center;
+	}
+
+	&__dot {
+		display: inline-block;
+		width: 6px;
+		height: 6px;
+		margin: 0 6px;
+		border-radius: 5px;
+		background-color: #000;
+		border: 2px solid #FFF;
+		transition: all 0.25s;
+
+		&&--active,
+		&:hover {
+			background-color: #AEAEAE;
+		}
+	}
+}
+
+
+   

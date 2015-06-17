@@ -1,0 +1,166 @@
+/* 
+ *  Core SiteVision Owl Carousel CSS File
+ */
+.sv-carousel {
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* position relative and z-index fix webkit rendering fonts issue */
+  position: relative;
+  z-index: 1;
+}
+.sv-carousel__stage-outer {
+  position: relative;
+  overflow: hidden;
+  /* fix for flashing background */
+  -webkit-transform: translate3d(0px, 0px, 0px);
+}
+.sv-carousel__stage {
+  position: relative;
+  -ms-touch-action: pan-Y;
+}
+.sv-carousel__stage:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.sv-carousel__item {
+  position: relative;
+  min-height: 1px;
+  float: left;
+  -webkit-backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+.sv-carousel__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  -webkit-transform-style: preserve-3d;
+}
+.sv-carousel__nav.sv-carousel--disabled,
+.sv-carousel__dots.sv-carousel--disabled {
+  display: none;
+}
+.sv-carousel__prev,
+.sv-carousel__next,
+.sv-carousel__dot {
+  cursor: pointer;
+  cursor: hand;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.sv-carousel--loaded {
+  display: block;
+}
+.sv-carousel--loading {
+  opacity: 0;
+  display: block;
+}
+.sv-carousel--hidden {
+  opacity: 0;
+}
+.sv-carousel--refresh .sv-carousel__item {
+  display: none;
+}
+.sv-carousel--drag .sv-carousel__item {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.sv-carousel--grab {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+.sv-carousel--rtl {
+  direction: rtl;
+}
+.sv-carousel--rtl .sv-carousel__item {
+  float: right;
+}
+/*
+*  Standard SiteVision Owl Carousel Theme
+*/
+.sv-imgcarousel__stage {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.sv-imgcarousel__prev,
+.sv-imgcarousel__next {
+  position: absolute;
+  top: 50%;
+  margin: -14px auto 0;
+  background: #000;
+  padding-top: 28px;
+  width: 28px;
+  border-radius: 17px;
+  border: 3px solid #fff;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease 0s;
+}
+.sv-editing-mode .sv-imgcarousel__prev,
+.sv-editing-mode .sv-imgcarousel__next,
+.sv-imgcarousel:hover .sv-imgcarousel__prev,
+.sv-imgcarousel:hover .sv-imgcarousel__next {
+  opacity: 1;
+}
+.sv-imgcarousel__prev:after,
+.sv-imgcarousel__next:after {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(255, 255, 255, 0);
+  border-width: 8px;
+  margin-top: -8px;
+}
+.sv-imgcarousel__prev:after {
+  right: 11px;
+  border-right-color: #fff;
+}
+.sv-imgcarousel__next:after {
+  left: 11px;
+  border-left-color: #fff;
+}
+.sv-imgcarousel--disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.sv-imgcarousel__dots {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  height: 14px;
+  text-align: center;
+}
+.sv-imgcarousel__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 6px;
+  border-radius: 5px;
+  background-color: #000;
+  border: 2px solid #FFF;
+  transition: all 0.25s;
+}
+.sv-imgcarousel__dot.sv-imgcarousel__dot--active,
+.sv-imgcarousel__dot:hover {
+  background-color: #AEAEAE;
+}
