@@ -1,5 +1,6 @@
 {
-  "name": "sv-carousel",
+  "name": "owl.carousel",
+  "svname": "sv-carousel",
   "description": "Touch enabled jQuery plugin that lets you create beautiful responsive carousel slider.",
   "version": "2.0.0-beta.2.4",
   "homepage": "https://github.com/smashingboxes/OwlCarousel2",

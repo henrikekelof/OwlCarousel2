@@ -71,7 +71,8 @@
 	 * @public
 	 */
 	Lazy.Defaults = {
-		lazyLoad: false
+		lazyLoad: false,
+		lazyClass: 'sv-carousel__img--lazy' // 'owl-lazy'
 	}
 
 	/**
@@ -81,7 +82,7 @@
 	 */
 	Lazy.prototype.load = function(position) {
 		var $item = this._core.$stage.children().eq(position),
-			$elements = $item && $item.find('.owl-lazy');
+			$elements = $item && $item.find('.' + this._core.settings.lazyClass);
 
 		if (!$elements || $.inArray($item.get(0), this._loaded) > -1) {
 			return;

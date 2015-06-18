@@ -2,7 +2,7 @@
 *  Standard SiteVision Owl Carousel Theme
 */
 
-.sv-imgcarousel {
+.sv-carousel {
 	
 	&__stage {
 	   list-style-type: none;
@@ -10,24 +10,20 @@
 	   padding: 0;
 	}
 
-	&__prev,
-	&__next {
+	&__navbtn-prev,
+	&__navbtn-next {
 		position: absolute;
 	   	top: 50%;
 	   	margin: -14px auto 0;
-	   	background: #000;
+	   	background-color: #000;
 		padding-top: 28px;
-		width: 28px;
+		width: 34px;
+		height: 0;
 		border-radius: 17px;
 		border: 3px solid #fff;
 		overflow: hidden;
 	   	opacity: 0;
 		transition: all 0.5s ease 0s;
-
-		.sv-editing-mode &,
-		.sv-imgcarousel:hover & {
-			opacity: 1;
-		}	
 
 		&:after {
 			top: 50%;
@@ -43,21 +39,42 @@
 		}
 	}
 
+	.sv-editing-mode &,
+	&:hover {
+		.sv-carousel__navbtn-prev,
+		.sv-carousel__navbtn-next {
+			opacity: 1;
 
-	&__prev:after {
+			&.sv-carousel__navbtn--disabled,
+			&.sv-carousel__navbtn--disabled {
+				opacity: 0.6;
+			}
+		}
+	}
+
+	&__navbtn-prev {
+		left: 10px;
+	}
+
+	&__navbtn-next {
+		right: 10px;
+	}
+
+	&__navbtn-prev:after {
 	  right: 11px;
 	  border-right-color: #fff;
 	}
 
-	&__next:after {
+	&__navbtn-next:after {
 	  left: 11px;
 	  border-left-color: #fff;
 	}
 
-	&--disabled {
-	   opacity: 0.5;
+	&__navbtn--disabled {
 	   cursor: default;
 	}
+
+	
 
 	&__dots {
 	   position: absolute;
@@ -65,13 +82,14 @@
 	   left: 0;
 	   right: 0;
 	   height: 14px;
+	   line-height: 14px;
 	   text-align: center;
 	}
 
 	&__dot {
 		display: inline-block;
-		width: 6px;
-		height: 6px;
+		width: 10px;
+		height: 10px;
 		margin: 0 6px;
 		border-radius: 5px;
 		background-color: #000;

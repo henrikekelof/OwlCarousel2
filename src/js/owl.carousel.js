@@ -16,7 +16,7 @@
 	 * @class The Owl Carousel.
 	 * @public
 	 * @param {HTMLElement|jQuery} element - The element to create the carousel for.
-	 * @param {Object} [options] - The options
+	 * @param {Object} '[options] - The options
 	 */
 	function Owl(element, options) {
 
@@ -178,9 +178,9 @@
 	 * @public
 	 */
 	Owl.Defaults = {
-		items: 3,
-		loop: false,
-		center: false,
+		items: 1, // 3
+		loop: true, // false
+		center: true, // false
 		rewind: false,
 
 		mouseDrag: true,
@@ -211,19 +211,25 @@
 		info: false,
 
 		nestedItemSelector: false,
-		itemElement: 'div',
-		stageElement: 'div',
+		itemElement: 'li',
+		stageElement: 'ul',
 
-		refreshClass: 'owl-refresh',
-		loadedClass: 'owl-loaded',
-		loadingClass: 'owl-loading',
-		rtlClass: 'owl-rtl',
-		responsiveClass: 'owl-responsive',
-		dragClass: 'owl-drag',
-		itemClass: 'owl-item',
-		stageClass: 'owl-stage',
-		stageOuterClass: 'owl-stage-outer',
-		grabClass: 'owl-grab'
+		refreshClass: 'sv-carousel--refresh', // 'owl-refresh'
+		loadedClass: 'sv-carousel--loaded', // 'owl-loaded'
+		loadingClass: 'sv-carousel--loading', // 'owl-loading'
+		rtlClass: 'sv-carousel--rtl', // 'owl-rtl'
+		responsiveClass: false, // 'owl-responsive',
+
+		dragClass: 'sv-carousel--drag', // 'owl-drag'
+		itemClass: 'sv-carousel__item', // 'owl-item'
+		stageClass: 'sv-carousel__stage', // 'owl-stage'
+		stageOuterClass: 'sv-carousel__stage-outer', // 'owl-stage-outer'
+		grabClass: 'sv-carousel--grab', // 'owl-grab'
+
+		clonedClass: 'sv-carousel__item--cloned', // 'cloned'
+		activeItemClass: 'sv-carousel__item--active', // 'active'
+		centerClass: 'sv-carousel__item--center' // 'center'
+
 	};
 
 	/**
@@ -271,7 +277,7 @@
 	}, {
 		filter: [ 'items', 'settings' ],
 		run: function() {
-			this.$stage.children('.cloned').remove();
+			this.$stage.children('.' + this.settings.clonedClass).remove();
 		}
 	}, {
 		filter: [ 'width', 'items', 'settings' ],
@@ -337,8 +343,8 @@
 
 			this._clones = clones;
 
-			$(append).addClass('cloned').appendTo(this.$stage);
-			$(prepend).addClass('cloned').prependTo(this.$stage);
+			$(append).addClass(settings.clonedClass).appendTo(this.$stage);
+			$(prepend).addClass(settings.clonedClass).prependTo(this.$stage);
 		}
 	}, {
 		filter: [ 'width', 'items', 'settings' ],
@@ -424,12 +430,12 @@
 				}
 			}
 
-			this.$stage.children('.active').removeClass('active');
-			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').addClass('active');
+			this.$stage.children('.' + this.settings.activeItemClass).removeClass(this.settings.activeItemClass);
+			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').addClass(this.settings.activeItemClass);
 
 			if (this.settings.center) {
-				this.$stage.children('.center').removeClass('center');
-				this.$stage.children().eq(this.current()).addClass('center');
+				this.$stage.children('.' + this.settings.centerClass).removeClass(this.settings.centerClass);
+				this.$stage.children().eq(this.current()).addClass(this.settings.centerClass);
 			}
 		}
 	} ];
@@ -1375,7 +1381,7 @@
 			this._plugins[i].destroy();
 		}
 
-		this.$stage.children('.cloned').remove();
+		this.$stage.children('.' + this.settings.clonedClass).remove();
 
 		this.$stage.unwrap();
 		this.$stage.children().contents().unwrap();

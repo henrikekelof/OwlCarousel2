@@ -7,6 +7,7 @@
   /* position relative and z-index fix webkit rendering fonts issue */
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 .sv-carousel__stage-outer {
   position: relative;
@@ -42,12 +43,12 @@
   margin: 0 auto;
   -webkit-transform-style: preserve-3d;
 }
-.sv-carousel__nav.sv-carousel--disabled,
-.sv-carousel__dots.sv-carousel--disabled {
+.sv-carousel__nav.sv-carousel__nav--disabled,
+.sv-carousel__dots.sv-carousel__dots--disabled {
   display: none;
 }
-.sv-carousel__prev,
-.sv-carousel__next,
+.sv-carousel__navbtn-prev,
+.sv-carousel__navbtn-next,
 .sv-carousel__dot {
   cursor: pointer;
   cursor: hand;
@@ -92,33 +93,28 @@
 /*
 *  Standard SiteVision Owl Carousel Theme
 */
-.sv-imgcarousel__stage {
+.sv-carousel__stage {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-.sv-imgcarousel__prev,
-.sv-imgcarousel__next {
+.sv-carousel__navbtn-prev,
+.sv-carousel__navbtn-next {
   position: absolute;
   top: 50%;
   margin: -14px auto 0;
-  background: #000;
+  background-color: #000;
   padding-top: 28px;
-  width: 28px;
+  width: 34px;
+  height: 0;
   border-radius: 17px;
   border: 3px solid #fff;
   overflow: hidden;
   opacity: 0;
   transition: all 0.5s ease 0s;
 }
-.sv-editing-mode .sv-imgcarousel__prev,
-.sv-editing-mode .sv-imgcarousel__next,
-.sv-imgcarousel:hover .sv-imgcarousel__prev,
-.sv-imgcarousel:hover .sv-imgcarousel__next {
-  opacity: 1;
-}
-.sv-imgcarousel__prev:after,
-.sv-imgcarousel__next:after {
+.sv-carousel__navbtn-prev:after,
+.sv-carousel__navbtn-next:after {
   top: 50%;
   border: solid transparent;
   content: " ";
@@ -130,37 +126,59 @@
   border-width: 8px;
   margin-top: -8px;
 }
-.sv-imgcarousel__prev:after {
+.sv-editing-mode .sv-carousel .sv-carousel__navbtn-prev,
+.sv-carousel:hover .sv-carousel__navbtn-prev,
+.sv-editing-mode .sv-carousel .sv-carousel__navbtn-next,
+.sv-carousel:hover .sv-carousel__navbtn-next {
+  opacity: 1;
+}
+.sv-editing-mode .sv-carousel .sv-carousel__navbtn-prev.sv-carousel__navbtn--disabled,
+.sv-carousel:hover .sv-carousel__navbtn-prev.sv-carousel__navbtn--disabled,
+.sv-editing-mode .sv-carousel .sv-carousel__navbtn-next.sv-carousel__navbtn--disabled,
+.sv-carousel:hover .sv-carousel__navbtn-next.sv-carousel__navbtn--disabled,
+.sv-editing-mode .sv-carousel .sv-carousel__navbtn-prev.sv-carousel__navbtn--disabled,
+.sv-carousel:hover .sv-carousel__navbtn-prev.sv-carousel__navbtn--disabled,
+.sv-editing-mode .sv-carousel .sv-carousel__navbtn-next.sv-carousel__navbtn--disabled,
+.sv-carousel:hover .sv-carousel__navbtn-next.sv-carousel__navbtn--disabled {
+  opacity: 0.6;
+}
+.sv-carousel__navbtn-prev {
+  left: 10px;
+}
+.sv-carousel__navbtn-next {
+  right: 10px;
+}
+.sv-carousel__navbtn-prev:after {
   right: 11px;
   border-right-color: #fff;
 }
-.sv-imgcarousel__next:after {
+.sv-carousel__navbtn-next:after {
   left: 11px;
   border-left-color: #fff;
 }
-.sv-imgcarousel--disabled {
-  opacity: 0.5;
+.sv-carousel__navbtn--disabled {
   cursor: default;
 }
-.sv-imgcarousel__dots {
+.sv-carousel__dots {
   position: absolute;
   bottom: 5px;
   left: 0;
   right: 0;
   height: 14px;
+  line-height: 14px;
   text-align: center;
 }
-.sv-imgcarousel__dot {
+.sv-carousel__dot {
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   margin: 0 6px;
   border-radius: 5px;
   background-color: #000;
   border: 2px solid #FFF;
   transition: all 0.25s;
 }
-.sv-imgcarousel__dot.sv-imgcarousel__dot--active,
-.sv-imgcarousel__dot:hover {
+.sv-carousel__dot.sv-carousel__dot--active,
+.sv-carousel__dot:hover {
   background-color: #AEAEAE;
 }

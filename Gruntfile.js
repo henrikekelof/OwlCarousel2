@@ -75,6 +75,17 @@ module.exports = function(grunt) {
 						src: '*.hbs',
 						dest: '<%= app.docs.dest %>/docs'
 					} ]
+				},
+				svdemos: {
+					options: {
+						layout: 'svdemos.hbs'
+					},
+					files: [ {
+						expand: true,
+						cwd: '<%= app.docs.pages %>/svdemos/',
+						src: '*.hbs',
+						dest: '<%= app.docs.dest %>/svdemos'
+					} ]
 				}
 			},
 
@@ -117,7 +128,7 @@ module.exports = function(grunt) {
 						paths: [ 'src/css' ]
 					},
 					files: {
-						'src/css/sv-carousel.css': 'src/less/sv-carousel.less'
+						'src/css/<%= pkg.svname %>.css': 'src/less/<%= pkg.svname %>.less'
 					}
 				}
 			},
@@ -131,7 +142,7 @@ module.exports = function(grunt) {
 				},
 				svdist: {
 					files: {
-						'dist/<%= pkg.name %>.js': '<%= app.src.scripts %>'
+						'dist/<%= pkg.svname %>.js': '<%= app.src.svscripts %>'
 					}
 				}
 			},
@@ -147,7 +158,7 @@ module.exports = function(grunt) {
 				},
 				svdist: {
 					files: {
-						'dist/assets/sv-carousel.min.css': 'src/css/sv-carousel.css'
+						'dist/assets/<%= pkg.svname %>.min.css': 'src/css/<%= pkg.svname %>.css'
 					}
 				}
 			},
@@ -180,6 +191,11 @@ module.exports = function(grunt) {
 				dist: {
 					files: {
 						'dist/<%= pkg.name %>.min.js': '<%= app.src.scripts %>'
+					}
+				},
+				svdist: {
+					files: {
+						'dist/<%= pkg.svname %>.min.js': '<%= app.src.svscripts %>'
 					}
 				}
 			},
@@ -316,15 +332,16 @@ module.exports = function(grunt) {
 
 	// tasks
 	grunt.registerTask('dist', [ 'clean:dist', 'sass:dist', 'concat:dist', 'cssmin:dist', 'copy:themes', 'copy:distImages', 'jscs:dist', 'uglify:dist', 'copy:readme' ]);
-	grunt.registerTask('svdist', [ 'clean:dist', 'less:dist', 'concat:svdist', 'cssmin:svdist', 'copy:svCss', 'copy:distImages', 'jscs:dist', 'uglify:dist', 'copy:readme' ]);
+	grunt.registerTask('svdist', [ 'clean:dist', 'less:dist', 'concat:svdist', 'cssmin:svdist', 'copy:svCss', 'copy:distImages', 'jscs:dist', 'uglify:svdist', 'copy:readme' ]);
 
 	grunt.registerTask('docs', [ 'dist', 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);
+	grunt.registerTask('svdocs', [ 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);
 
 	grunt.registerTask('test', [ 'jshint:dist', 'qunit:dist' ]);
 
 	grunt.registerTask('owldefault', [ 'dist', 'docs', 'test' ]);
 
-	grunt.registerTask('default', [ 'svdist' ]);
+	grunt.registerTask('default', [ 'svdist', 'svdocs' ]);
 
 	grunt.registerTask('serve', [ 'connect:docs', 'watch' ]);
 

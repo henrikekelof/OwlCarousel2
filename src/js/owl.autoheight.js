@@ -56,7 +56,7 @@
 	 */
 	AutoHeight.Defaults = {
 		autoHeight: false,
-		autoHeightClass: 'owl-height'
+		autoHeightClass: 'sv-carousel__stage-outer--height' // 'owl-height'
 	};
 
 	/**

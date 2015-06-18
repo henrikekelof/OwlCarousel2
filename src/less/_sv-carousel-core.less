@@ -9,7 +9,8 @@
 	/* position relative and z-index fix webkit rendering fonts issue */
 	position: relative;
 	z-index: 1;
-	
+	box-sizing: border-box;
+
 	&__stage-outer {
 		position: relative;
 		overflow: hidden;
@@ -49,13 +50,13 @@
 		-webkit-transform-style: preserve-3d;
 	}
 	
-	&__nav&--disabled,
-	&__dots&--disabled {
+	&__nav&__nav--disabled,
+	&__dots&__dots--disabled {
 		display: none;
 	}
 
-	&__prev,
-	&__next,
+	&__navbtn-prev,
+	&__navbtn-next,
 	&__dot {
 		cursor: pointer;
 		cursor: hand;
