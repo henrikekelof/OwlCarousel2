@@ -168,7 +168,7 @@ module.exports = function(grunt) {
 				},
 				svdist: {
 					files: {
-						'dist/assets/<%= pkg.svname %>.min.css': 'src/css/<%= pkg.svname %>.css'
+						'dist/<%= pkg.svname %>.min.css': 'src/css/<%= pkg.svname %>.css'
 					}
 				}
 			},
@@ -228,7 +228,7 @@ module.exports = function(grunt) {
 					flatten: true,
 					cwd: 'src/css/',
 					src: [ 'sv-*.css' ],
-					dest: 'dist/assets'
+					dest: 'dist'
 				},
 
 				distImages: {
@@ -237,6 +237,14 @@ module.exports = function(grunt) {
 					cwd: 'src/',
 					src: [ 'img/*.*' ],
 					dest: 'dist/assets'
+				},
+
+				svDistImages: {
+					expand: true,
+					flatten: true,
+					cwd: 'src/',
+					src: [ 'img/*.*' ],
+					dest: 'dist'
 				},
 
 				distToDocs: {
@@ -263,6 +271,12 @@ module.exports = function(grunt) {
 					files: [ {
 						'dist/LICENSE': 'LICENSE',
 						'dist/README.md': 'README.md'
+					} ]
+				},
+				svreadme: {
+					files: [ {
+						'dist/LICENSE': 'LICENSE',
+						'dist/README.md': 'sv.README.md'
 					} ]
 				}
 			},
@@ -345,7 +359,7 @@ module.exports = function(grunt) {
 
 	// tasks
 	grunt.registerTask('dist', [ 'clean:dist', 'sass:dist', 'concat:dist', 'cssmin:dist', 'copy:themes', 'copy:distImages', 'jscs:dist', 'uglify:dist', 'copy:readme' ]);
-	grunt.registerTask('svdist', [ 'clean:dist', 'less:dist', 'concat:svdist', 'cssmin:svdist', 'copy:svCss', 'copy:distImages', 'jscs:svdist', 'uglify:svdist', 'copy:readme' ]);
+	grunt.registerTask('svdist', [ 'clean:dist', 'less:dist', 'concat:svdist', 'cssmin:svdist', 'copy:svCss', 'copy:svDistImages', 'jscs:svdist', 'uglify:svdist', 'copy:svreadme' ]);
 
 	grunt.registerTask('docs', [ 'dist', 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);
 	grunt.registerTask('svdocs', [ 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);
