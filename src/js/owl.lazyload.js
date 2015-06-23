@@ -71,7 +71,7 @@
 	 * @public
 	 */
 	Lazy.Defaults = {
-		lazyLoad: false,
+		lazyLoad: true,
 		lazyClass: 'sv-carousel__img--lazy' // 'owl-lazy'
 	}
 

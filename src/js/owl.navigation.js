@@ -112,6 +112,11 @@
 			}, this)
 		};
 
+		if (!this._core.options.navText && this.$element.data('navtext-prev') && this.$element.data('navtext-next')) {
+			Navigation.Defaults.navText[0] = this.$element.data('navtext-prev');
+			Navigation.Defaults.navText[1] = this.$element.data('navtext-next');
+		}
+
 		// set default options
 		this._core.options = $.extend({}, Navigation.Defaults, this._core.options);
 
@@ -125,8 +130,8 @@
 	 * @todo Rename `slideBy` to `navBy`
 	 */
 	Navigation.Defaults = {
-		nav: false,
-		navText: [ 'prev', 'next' ],
+		nav: true,
+		navText: [ 'Föregående', 'Nästa' ],
 		navSpeed: false,
 		navElement: 'div',
 		navContainer: false,

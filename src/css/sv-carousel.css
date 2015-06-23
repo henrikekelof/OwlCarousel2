@@ -9,6 +9,11 @@
   z-index: 1;
   box-sizing: border-box;
 }
+.sv-carousel *,
+.sv-carousel *:before,
+.sv-carousel *:after {
+  box-sizing: inherit;
+}
 .sv-carousel__stage-outer {
   position: relative;
   overflow: hidden;
