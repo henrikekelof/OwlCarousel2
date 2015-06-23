@@ -130,6 +130,6 @@
 		}
 	};
 
-	$.fn.owlCarousel.Constructor.Plugins.Lazy = Lazy;
+	$.fn.<%= pluginName %>.Constructor.Plugins.Lazy = Lazy;
 
 })(window.Zepto || window.jQuery, window, document);

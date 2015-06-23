@@ -275,6 +275,6 @@
 		}
 	};
 
-	$.fn.owlCarousel.Constructor.Plugins.Video = Video;
+	$.fn.<%= pluginName %>.Constructor.Plugins.Video = Video;
 
 })(window.Zepto || window.jQuery, window, document);

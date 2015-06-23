@@ -1620,7 +1620,7 @@
 	 * @todo Navigation plugin `next` and `prev`
 	 * @public
 	 */
-	$.fn.owlCarousel = function(option) {
+	$.fn.<%= pluginName %> = function(option) {
 		var args = Array.prototype.slice.call(arguments, 1);
 
 		return this.each(function() {
@@ -1655,6 +1655,6 @@
 	 * The constructor for the jQuery Plugin
 	 * @public
 	 */
-	$.fn.owlCarousel.Constructor = Owl;
+	$.fn.<%= pluginName %>.Constructor = Owl;
 
 })(window.Zepto || window.jQuery, window, document);

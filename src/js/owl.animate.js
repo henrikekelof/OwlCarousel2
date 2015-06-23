@@ -115,6 +115,6 @@
 		}
 	};
 
-	$.fn.owlCarousel.Constructor.Plugins.Animate = Animate;
+	$.fn.<%= pluginName %>.Constructor.Plugins.Animate = Animate;
 
 })(window.Zepto || window.jQuery, window, document);

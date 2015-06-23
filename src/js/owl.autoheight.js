@@ -91,6 +91,6 @@
 		}
 	};
 
-	$.fn.owlCarousel.Constructor.Plugins.AutoHeight = AutoHeight;
+	$.fn.<%= pluginName %>.Constructor.Plugins.AutoHeight = AutoHeight;
 
 })(window.Zepto || window.jQuery, window, document);

@@ -105,6 +105,6 @@
 		}
 	};
 
-	$.fn.owlCarousel.Constructor.Plugins.AutoRefresh = AutoRefresh;
+	$.fn.<%= pluginName %>.Constructor.Plugins.AutoRefresh = AutoRefresh;
 
 })(window.Zepto || window.jQuery, window, document);

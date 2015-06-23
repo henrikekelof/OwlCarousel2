@@ -11,10 +11,10 @@ tags:
 ---
 
 <div class="sv-carousel">
-	<img class="sv-carousel__img sv-carousel__img--lazy" data-src="http://placehold.it/350x250&text=1" data-src-retina="http://placehold.it/350x250&text=1-retina" alt="">
-	<img class="sv-carousel__img sv-carousel__img--lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
-	<img class="sv-carousel__img sv-carousel__img--lazy" data-src="http://placehold.it/350x250&text=3" alt="">
-	<img class="sv-carousel__img sv-carousel__img--lazy" data-src="http://placehold.it/350x250&text=4" alt="">
+	<img class="sv-carousel__img sv-carousel__img--lazy" src="http://placehold.it/350x250&text=1" data-src-retina="http://placehold.it/350x250&text=1-retina" alt="">
+	<img class="sv-carousel__img sv-carousel__img--lazy" src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
+	<img class="sv-carousel__img sv-carousel__img--lazy" src="http://placehold.it/350x250&text=3" alt="">
+	<img class="sv-carousel__img sv-carousel__img--lazy" src="http://placehold.it/350x250&text=4" alt="">
 	<img class="sv-carousel__img sv-carousel__img--lazy" data-src="http://placehold.it/350x250&text=5" alt="">
 	<img class="sv-carousel__img sv-carousel__img--lazy" data-src="http://placehold.it/350x250&text=6" alt="">
 	<img class="sv-carousel__img sv-carousel__img--lazy" data-src="http://placehold.it/350x250&text=7" alt="">
@@ -67,7 +67,7 @@ $('.owl-carousel').owlCarousel({
 {{/markdown }}
 <script>
 jQuery(document).ready(function($) {
-	$('.sv-carousel').owlCarousel({
+	$('.sv-carousel').svCarousel({
 		items:4,
 		lazyLoad:true,
 		nav: true,

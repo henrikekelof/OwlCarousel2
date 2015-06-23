@@ -135,12 +135,22 @@ module.exports = function(grunt) {
 
 			concat: {
 				dist: {
+					options: {
+						process: {
+							data: { pluginName: 'owlCarousel' }
+						}
+					},
 					files: {
 						'dist/assets/owl.carousel.css': [ 'src/css/*.css', '!src/css/owl.theme*.css', '!src/css/sv-*.css' ],
 						'dist/<%= pkg.name %>.js': '<%= app.src.scripts %>'
 					}
 				},
 				svdist: {
+					options: {
+						process: {
+							data: { pluginName: 'svCarousel' }
+						}
+					},
 					files: {
 						'dist/<%= pkg.svname %>.js': '<%= app.src.svscripts %>'
 					}
@@ -183,19 +193,22 @@ module.exports = function(grunt) {
 					reporterOutput: 'jscs.report.txt'
 				},
 				dist: {
-					src: [ '<%= app.src.scripts %>', 'Gruntfile.js' ]
+					src: [ 'dist/<%= pkg.name %>.js', 'Gruntfile.js' ]
+				},
+				svdist: {
+					src: [ 'dist/<%= pkg.svname %>.js', 'Gruntfile.js' ]
 				}
 			},
 
 			uglify: {
 				dist: {
 					files: {
-						'dist/<%= pkg.name %>.min.js': '<%= app.src.scripts %>'
+						'dist/<%= pkg.name %>.min.js': 'dist/<%= pkg.name %>.js'
 					}
 				},
 				svdist: {
 					files: {
-						'dist/<%= pkg.svname %>.min.js': '<%= app.src.svscripts %>'
+						'dist/<%= pkg.svname %>.min.js': 'dist/<%= pkg.svname %>.js'
 					}
 				}
 			},
@@ -332,7 +345,7 @@ module.exports = function(grunt) {
 
 	// tasks
 	grunt.registerTask('dist', [ 'clean:dist', 'sass:dist', 'concat:dist', 'cssmin:dist', 'copy:themes', 'copy:distImages', 'jscs:dist', 'uglify:dist', 'copy:readme' ]);
-	grunt.registerTask('svdist', [ 'clean:dist', 'less:dist', 'concat:svdist', 'cssmin:svdist', 'copy:svCss', 'copy:distImages', 'jscs:dist', 'uglify:svdist', 'copy:readme' ]);
+	grunt.registerTask('svdist', [ 'clean:dist', 'less:dist', 'concat:svdist', 'cssmin:svdist', 'copy:svCss', 'copy:distImages', 'jscs:svdist', 'uglify:svdist', 'copy:readme' ]);
 
 	grunt.registerTask('docs', [ 'dist', 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);
 	grunt.registerTask('svdocs', [ 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);

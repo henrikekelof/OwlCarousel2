@@ -156,6 +156,6 @@
 		}
 	};
 
-	$.fn.owlCarousel.Constructor.Plugins.autoplay = Autoplay;
+	$.fn.<%= pluginName %>.Constructor.Plugins.autoplay = Autoplay;
 
 })(window.Zepto || window.jQuery, window, document);

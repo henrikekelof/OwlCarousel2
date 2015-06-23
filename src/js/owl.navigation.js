@@ -383,6 +383,6 @@
 		}
 	};
 
-	$.fn.owlCarousel.Constructor.Plugins.Navigation = Navigation;
+	$.fn.<%= pluginName %>.Constructor.Plugins.Navigation = Navigation;
 
 })(window.Zepto || window.jQuery, window, document);

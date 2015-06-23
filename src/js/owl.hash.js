@@ -116,6 +116,6 @@
 		}
 	};
 
-	$.fn.owlCarousel.Constructor.Plugins.Hash = Hash;
+	$.fn.<%= pluginName %>.Constructor.Plugins.Hash = Hash;
 
 })(window.Zepto || window.jQuery, window, document);
