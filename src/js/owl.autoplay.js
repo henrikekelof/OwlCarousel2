@@ -79,6 +79,17 @@
 
 		// set default options
 		this._core.options = $.extend({}, Autoplay.Defaults, this._core.options);
+
+		if (this._core.options.autoplay) {
+			this._core.$element
+				.on('focus', $.proxy(function() {
+					this.pause();
+				}, this))
+				.on('blur', $.proxy(function() {
+					this.play();
+				}, this));
+		}
+
 	};
 
 	/**

@@ -8,6 +8,15 @@
  * @todo itemsScaleUp
  * @todo Test Zepto
  * @todo stagePadding calculate wrong active classes
+ *
+ *
+ *  SiteVision Owl Carousel (Modified)
+ *
+ *  This file should not be edited directly
+ *  in SiteVision project.
+ *  Go to GitHub repo and follow instructions
+ *  for how to build.
+ *  https://github.com/sitevision/OwlCarousel2
  */
 ;(function($, window, document, undefined) {
 
@@ -483,6 +492,7 @@
 		}
 
 		this.$element
+			.attr('tabindex', '0')
 			.removeClass(this.options.loadingClass)
 			.addClass(this.options.loadedClass);
 

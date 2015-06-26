@@ -160,7 +160,8 @@
 	 */
 	Navigation.prototype.initialize = function() {
 		var override,
-			settings = this._core.settings;
+			carousel = this._core,
+			settings = carousel.settings;
 
 		// create DOM structure for relative navigation
 		this._controls.$relative = (settings.navContainer ? $(settings.navContainer)
@@ -180,6 +181,16 @@
 			.on('click', $.proxy(function(e) {
 				this.next(settings.navSpeed);
 			}, this));
+
+		this.$element
+			.on('keyup', function(evt) {
+				if (evt.keyCode === 37) {
+					carousel.prev(settings.navSpeed);
+				}
+				if (evt.keyCode === 39) {
+					carousel.next(settings.navSpeed);
+				}
+			});
 
 		// create DOM structure for absolute navigation
 		if (!settings.dotsData) {
