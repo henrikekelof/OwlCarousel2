@@ -90,15 +90,25 @@
 
 		$elements.each($.proxy(function(index, element) {
 			var $element = $(element), image,
-				url = (window.devicePixelRatio > 1 && $element.attr('data-src-retina')) || $element.attr('data-src');
+				url = (window.devicePixelRatio > 1 && $element.attr('data-src-retina')) || $element.attr('data-src'),
+				srcset = $element.attr('data-src'),
+				supportSrcset = (typeof document.createElement === 'function' && 'srcset' in document.createElement('img'));
 
 			this._core.trigger('load', { element: $element, url: url }, 'lazy');
 
 			if ($element.is('img')) {
-				$element.one('load.owl.lazy', $.proxy(function() {
-					$element.css('opacity', 1);
-					this._core.trigger('loaded', { element: $element, url: url }, 'lazy');
-				}, this)).attr('src', url);
+				$element.one('load.owl.lazy',
+					$.proxy(function() {
+						$element.css('opacity', 1);
+						this._core.trigger('loaded', {
+							element: $element,
+							url: url
+						}, 'lazy');
+					}, this))
+						.attr(
+							(srcset && supportSrcset) ? 'srcset' : 'src',
+							(srcset && supportSrcset) ? srcset : url
+						);
 			} else {
 				image = new Image();
 				image.onload = $.proxy(function() {
